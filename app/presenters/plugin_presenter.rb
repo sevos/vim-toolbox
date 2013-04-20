@@ -5,7 +5,8 @@ class PluginPresenter
   end
 
   def repository
-    @link_builder.link_to @plugin.repository, github_repository_url(repository)
+    @link_builder.link_to(@plugin.repository,
+                          github_repository_url(@plugin.repository))
   end
 
   private
