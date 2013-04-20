@@ -24,7 +24,7 @@ describe PluginsController do
       subject
     end
 
-    context "response" do
+    describe "response" do
       subject { response }
       before { Plugin.stub(new: plugin) and create }
 
@@ -44,5 +44,13 @@ describe PluginsController do
       end
     end
 
+  end
+
+  describe "GET index" do
+    subject { get :index }
+    before { subject }
+
+    it { expect(response).to be_success }
+    it { expect(assigns(:plugins)).to be_an(ActiveRecord::Relation) }
   end
 end

@@ -1,3 +1,9 @@
 <section>
   <%= link_to "Submit plugin", new_plugin_path %>
 </section>
+
+<ul id="plugins">
+  <% @plugins.each do |plugin| %>
+    <li><%= plugin.repository %></li>
+  <% end -%>
+</ul>

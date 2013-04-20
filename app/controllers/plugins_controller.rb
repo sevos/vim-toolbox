@@ -1,5 +1,6 @@
 class PluginsController < ApplicationController
   def index
+    @plugins = Plugin.all
   end
 
   def new
