@@ -3,6 +3,10 @@ VimToolbox::Application.routes.draw do
   resources :plugins
 
   namespace :admin do
-    resources :plugins
+    resources :plugins do
+      member do
+        put :approve
+      end
+    end
   end
 end

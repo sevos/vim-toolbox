@@ -1,5 +1,6 @@
-class PluginPresenter
+class PluginPresenter < SimpleDelegator
   def initialize plugin, link_builder
+    super plugin
     @plugin = plugin
     @link_builder = link_builder
   end
