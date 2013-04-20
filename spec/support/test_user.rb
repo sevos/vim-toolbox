@@ -16,4 +16,14 @@ class TestUser < Bbq::TestUser
       click_button "Submit"
     end
   end
+
+  module PluginReviewer
+    def approve_plugin repo
+      visit '/admin/plugins'
+
+      within(".plugin", text: repo) do
+        click_button "Approve"
+      end
+    end
+  end
 end

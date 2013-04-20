@@ -1,0 +1,7 @@
+<ul id="plugins">
+  <% @plugins.each do |plugin| %>
+    <li class="plugin">
+      <%= link_to_github_repository plugin.repository %>
+    </li>
+  <% end -%>
+</ul>
