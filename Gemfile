@@ -39,5 +39,8 @@ gem 'jbuilder', '~> 1.0.1'
 
 group :test do
   gem 'bbq', '~> 0.2.0'
+end
+
+group :development, :test do
   gem 'rspec-rails'
 end
