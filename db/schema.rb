@@ -11,13 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130421111214) do
+ActiveRecord::Schema.define(version: 20130421210557) do
 
   create_table "plugins", force: true do |t|
     t.string   "repository"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "approved_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "nickname"
+    t.string   "email"
+    t.string   "provider"
+    t.string   "uid"
+    t.text     "avatar_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

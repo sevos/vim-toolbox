@@ -47,4 +47,23 @@ class TestUser < Bbq::TestUser
       not_see! repository
     end
   end
+
+  module GithubUser
+    def sign_in(as: "test_user")
+      open_plugin_list
+
+      authorization = if as.respond_to? :authorize
+        as.authorize
+      else
+        TestGithub.new(nickname: as).authorize
+      end
+
+      click_link "Sign in"
+      authorization
+    end
+
+    def is_signed_in
+      see! @logged_in_user_name
+    end
+  end
 end

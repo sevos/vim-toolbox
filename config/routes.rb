@@ -1,5 +1,6 @@
 VimToolbox::Application.routes.draw do
   root to: 'plugins#index'
+  resources :sessions, only: [:create]
   resources :plugins
 
   namespace :admin do
@@ -9,4 +10,6 @@ VimToolbox::Application.routes.draw do
       end
     end
   end
+
+  get "/auth/:provider/callback" => "sessions#create"
 end
