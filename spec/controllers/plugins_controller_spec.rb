@@ -47,10 +47,12 @@ describe PluginsController do
   end
 
   describe "GET index" do
-    subject { get :index }
-    before { subject }
+    before do
+      Plugin.stub(approved: [double])
+      get :index
+    end
 
     it { expect(response).to be_success }
-    it { expect(assigns(:plugins)).to be_an(ActiveRecord::Relation) }
+    it { expect(assigns(:plugins)).to be_an_array_of(PluginPresenter) }
   end
 end

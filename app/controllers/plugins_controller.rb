@@ -1,6 +1,6 @@
 class PluginsController < ApplicationController
   def index
-    @plugins = Plugin.all
+    @plugins = Plugin.approved.map { |p| PluginPresenter.new(p, view_context) }
   end
 
   def new

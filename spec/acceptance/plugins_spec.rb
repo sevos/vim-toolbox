@@ -7,12 +7,15 @@ feature "plugins" do
 
   scenario "submit and approve new plugin" do
     artur.roles(:plugin_reviewer)
-    adam.roles(:plugin_submitter)
+    adam.roles(:plugin_submitter, :plugin_viewer)
 
     adam.submit_plugin "user/superplugin"
+    adam.does_not_see_plugin "user/superplugin"
+
     artur.approve_plugin "user/superplugin"
+    artur.does_not_see_plugin 'user/superplugin'
 
     adam.open_plugin_list
-    adam.see! "user/superplugin"
+    adam.see_plugin 'user/superplugin'
   end
 end
