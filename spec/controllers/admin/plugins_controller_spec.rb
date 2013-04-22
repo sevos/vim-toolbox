@@ -13,7 +13,7 @@ describe Admin::PluginsController do
   end
 
   describe "PUT approve" do
-    let(:plugin) { double(id: 1, approve: true) }
+    let(:plugin) { double(id: 1, approve: true, sync: true) }
 
     before do
       Plugin.stub(find: plugin)
@@ -28,6 +28,11 @@ describe Admin::PluginsController do
 
     it 'approves plugin' do
       plugin.should_receive :approve
+      subject
+    end
+
+    it "syncs plugin with github" do
+      plugin.should_receive :sync
       subject
     end
 

@@ -44,4 +44,29 @@ describe Plugin do
       expect(subject).to eq(save_result)
     end
   end
+
+  describe "#sync" do
+    let(:github_repo) { double(description: "Description") }
+    let(:github_repos) { double }
+    let(:github_api) { double(repos: github_repos) }
+
+    subject { plugin.sync(github_api: github_api) }
+
+    before do
+      plugin.repository = "user/superplugin"
+      github_repos.should_receive(:get).with(user: "user", repo: "superplugin").
+        and_return(github_repo)
+    end
+
+    it "updates description" do
+      subject
+      expect(plugin.description).to eq("Description")
+    end
+
+    it "saves plugin" do
+      plugin.should_receive(:save)
+      subject
+    end
+
+  end
 end

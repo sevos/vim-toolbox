@@ -37,9 +37,10 @@ class TestUser < Bbq::TestUser
   end
 
   module PluginViewer
-    def see_plugin repository
+    def see_plugin(repository, with_description: nil)
       open_plugin_list
       see! repository
+      see! with_description if with_description
     end
 
     def does_not_see_plugin repository

@@ -1,6 +1,9 @@
+require 'webmock'
 OmniAuth.config.test_mode = true
 
 class TestGithub
+  include WebMock::API
+
   attr_reader :nickname
 
   def initialize(nickname: "test_user", info: {})
@@ -21,5 +24,12 @@ class TestGithub
                                 image: 'http://example.com/image.gif')
     })
     self
+  end
+
+  def has_repository(repository, with_description: "description")
+    stub_request(:get, "https://api.github.com/repos/#{repository}").
+         to_return(:status => 200,
+                   :body => {description: with_description}.to_json,
+                   :headers => {})
   end
 end

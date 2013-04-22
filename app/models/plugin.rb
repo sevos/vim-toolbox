@@ -7,4 +7,10 @@ class Plugin < ActiveRecord::Base
     self.approved_at = Time.now
     save
   end
+
+  def sync(github_api: Github)
+    user, repo = repository.split("/")
+    self.description = github_api.repos.get(user: user, repo: repo).description
+    save
+  end
 end

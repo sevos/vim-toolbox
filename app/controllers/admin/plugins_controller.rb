@@ -6,6 +6,7 @@ class Admin::PluginsController < ApplicationController
   def approve
     plugin = Plugin.find(params[:id])
     plugin.approve
+    plugin.sync
     redirect_to admin_plugins_path
   end
 end

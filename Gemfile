@@ -2,8 +2,9 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0.beta1'
-gem 'omniauth-github'
 gem 'sqlite3'
+gem 'omniauth-github'
+gem 'github_api'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -38,6 +39,7 @@ gem 'jbuilder', '~> 1.0.1'
 # gem 'debugger'
 
 group :test do
+  gem 'webmock'
   gem 'bbq', '~> 0.2.0'
 end
 

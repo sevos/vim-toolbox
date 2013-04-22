@@ -4,6 +4,9 @@
 
 <ul id="plugins">
   <% @plugins.each do |plugin| %>
-    <li><%= plugin.repository %></li>
+    <li>
+      <%= plugin.repository %>
+      <small><%= plugin.description %></small>
+    </li>
   <% end -%>
 </ul>
