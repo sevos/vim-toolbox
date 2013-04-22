@@ -55,15 +55,17 @@ class TestUser < Bbq::TestUser
       authorization = if as.respond_to? :authorize
         as.authorize
       else
-        TestGithub.new(nickname: as).authorize
+        TestGithub.new(nickname: as.to_s).authorize
       end
 
       click_link "Sign in"
+      @logged_in_user_name = authorization.nickname
       authorization
     end
 
     def is_signed_in
-      see! @logged_in_user_name
+      not_see! "Sign in"
+      expect(page).to have_content(@logged_in_user_name)
     end
   end
 end

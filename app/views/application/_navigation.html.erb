@@ -1,4 +1,8 @@
 <section id="navigation">
   <%= link_to "Plugins", plugins_path %>
-  <%= link_to "Sign in", "/auth/github" %>
+  <% if current_user.present? %>
+    <%= current_user.nickname %>
+  <% else %>
+    <%= link_to "Sign in", "/auth/github" %>
+  <% end %>
 </section>

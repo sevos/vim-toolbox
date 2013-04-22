@@ -1,6 +1,7 @@
 OmniAuth.config.test_mode = true
 
 class TestGithub
+  attr_reader :nickname
 
   def initialize(nickname: "test_user", info: {})
     @nickname = nickname
@@ -12,7 +13,7 @@ class TestGithub
   end
 
   def authorize
-    OmniAuth.config.mock_auth[:twitter] = OmniAuth::AuthHash.new({
+    OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
       provider: 'github',
       uid: uid,
       info: @info.reverse_merge(nickname: @nickname,
