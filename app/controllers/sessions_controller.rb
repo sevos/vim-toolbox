@@ -4,4 +4,9 @@ class SessionsController < ApplicationController
     Session.create(auth_params, session)
     redirect_to plugins_path
   end
+
+  def destroy
+    Session.destroy(session)
+    redirect_to plugins_path
+  end
 end

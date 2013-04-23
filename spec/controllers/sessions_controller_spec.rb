@@ -19,7 +19,25 @@ describe SessionsController do
 
     it 'redirects to plugins path' do
       subject
-      expect(response).to redirect_to plugins_path
+      expect(response).to redirect_to("/plugins")
+    end
+  end
+
+  describe 'DELETE destroy' do
+    subject { delete :destroy }
+
+    before do
+      Session.stub(destroy: true)
+    end
+
+    it 'destroys session' do
+      Session.should_receive(:destroy).with(session)
+      subject
+    end
+
+    it 'redirects to plugins path' do
+      subject
+      expect(response).to redirect_to("/plugins")
     end
   end
 end

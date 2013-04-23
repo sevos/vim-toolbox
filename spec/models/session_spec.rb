@@ -25,6 +25,14 @@ describe Session do
     end
   end
 
+  describe ".destroy" do
+    it 'signs out user' do
+      controller_session = {user_id: 1, other: "key"}
+      Session.destroy controller_session
+      expect(controller_session).to eq({other: "key"})
+    end
+  end
+
   describe "#sign_in" do
     let(:controller_session) { Hash.new }
     let(:session) { Session.new(controller_session) }

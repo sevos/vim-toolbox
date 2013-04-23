@@ -6,6 +6,10 @@ class Session
     user
   end
 
+  def self.destroy(controller_session)
+    controller_session.delete(:user_id)
+  end
+
   def initialize(controller_session)
     @controller_session = controller_session
   end

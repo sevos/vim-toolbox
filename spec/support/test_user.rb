@@ -68,5 +68,10 @@ class TestUser < Bbq::TestUser
       not_see! "Sign in"
       expect(page).to have_content(@logged_in_user_name)
     end
+
+    def sign_out
+      open_plugin_list
+      click_link "Sign out"
+    end
   end
 end
