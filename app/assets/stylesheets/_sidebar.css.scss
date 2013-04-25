@@ -1,0 +1,32 @@
+div.page {
+  aside {
+    $font-color: #DBC7AB + #222222;
+    @include disable-link-decoration($font-color);
+
+    h1 {
+      font-size: 2.5em;
+      text-align: center;
+    }
+
+    .user {
+      .name {
+        color: $font-color;
+        img.avatar {
+          width: 3em;
+          height: 3em;
+        }
+        padding-right: 1em;
+      }
+
+      .button {
+        a {
+          @include fill-parent;
+          text-align: center;
+          font-size: 1.5em;
+        }
+        &.sign-out { @include button(shiny, #61584B); }
+        &.sign-in  { @include button(shiny, #4294f0); }
+      }
+    }
+  }
+}

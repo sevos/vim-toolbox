@@ -31,6 +31,9 @@ GEM
     bbq (0.2.0)
       activesupport (>= 2.0)
       capybara (~> 2.0)
+    bourbon (3.1.4)
+      sass (>= 3.2.0)
+      thor
     builder (3.1.4)
     capybara (2.1.0)
       mime-types (>= 1.16)
@@ -58,6 +61,13 @@ GEM
       multi_json (~> 1.4)
       nokogiri (~> 1.5.2)
       oauth2
+    haml (4.0.2)
+      tilt
+    haml-rails (0.4)
+      actionpack (>= 3.1, < 4.1)
+      activesupport (>= 3.1, < 4.1)
+      haml (>= 3.1, < 4.1)
+      railties (>= 3.1, < 4.1)
     hashie (2.0.3)
     hike (1.2.2)
     httpauth (0.2.0)
@@ -78,6 +88,9 @@ GEM
     minitest (4.7.1)
     multi_json (1.7.2)
     multipart-post (1.2.0)
+    neat (1.2.1)
+      bourbon (>= 2.1)
+      sass (>= 3.2)
     nokogiri (1.5.9)
     oauth2 (0.8.1)
       faraday (~> 0.8)
@@ -166,10 +179,13 @@ PLATFORMS
 
 DEPENDENCIES
   bbq (~> 0.2.0)
+  bourbon
   coffee-rails (~> 4.0.0.beta1)
   github_api
+  haml-rails
   jbuilder (~> 1.0.1)
   jquery-rails
+  neat
   omniauth-github
   rails (= 4.0.0.beta1)
   rspec-rails

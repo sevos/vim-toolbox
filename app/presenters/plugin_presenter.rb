@@ -10,6 +10,10 @@ class PluginPresenter < SimpleDelegator
                           github_repository_url(@plugin.repository))
   end
 
+  def description
+    super.presence || "No description"
+  end
+
   private
 
   def github_repository_url(repository)

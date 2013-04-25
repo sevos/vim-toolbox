@@ -1,0 +1,5 @@
+%ul#plugins
+  - @plugins.each do |plugin|
+    %li.plugin
+      = plugin.repository
+      = button_to 'Approve', [:approve, :admin, plugin], method: 'put'

@@ -1,0 +1,32 @@
+@mixin disable-link-decoration($color: black) {
+  a {
+    text-decoration: none;
+    color: $color;
+  }
+}
+
+body {
+  margin: 0;
+  background-color: #61584B;
+  font-family: $helvetica;
+}
+
+div.page {
+  @include outer-container;
+  section.content {
+    @include pad();
+    @include span-columns(8);
+  }
+
+  aside {
+    @include span-columns(4);
+    @include omega();
+
+    .user {
+      @include row;
+      .name { @include span-columns(2 of 4); }
+      .button { @include span-columns(2 of 4); }
+    }
+  }
+}
+

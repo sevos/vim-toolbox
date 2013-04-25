@@ -1,0 +1,14 @@
+%nav
+  .user
+    - if current_user.present?
+      .name
+        = image_tag current_user.avatar_url, class: 'avatar'
+        = current_user.nickname
+      .button.sign-out= link_to "Sign out", session_path, method: "delete"
+    - else
+      .name &nbsp;
+      .button.sign-in= link_to "Sign in", "/auth/github", class: "sign-in"
+
+  .menu
+    %ul
+      %li= link_to "Plugins", plugins_path
