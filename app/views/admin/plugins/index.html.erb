@@ -1,8 +1,0 @@
-<ul id="plugins">
-  <% @plugins.each do |plugin| %>
-    <li class="plugin">
-      <%= plugin.repository %>
-      <%= button_to 'Approve', [:approve, :admin, plugin], method: 'put' %>
-    </li>
-  <% end -%>
-</ul>

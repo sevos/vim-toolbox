@@ -9,11 +9,13 @@ div.page {
     }
 
     .user {
+      height: 2.8em;
+
       .name {
         color: $font-color;
         img.avatar {
-          width: 3em;
-          height: 3em;
+          width: 2.8em;
+          height: 2.8em;
         }
         padding-right: 1em;
       }
