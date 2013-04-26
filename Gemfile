@@ -3,7 +3,8 @@ ruby "2.0.0"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.0.beta1'
-gem 'sqlite3'
+gem 'sqlite3', group: :development
+gem 'pg', group: :production
 gem 'omniauth-github'
 gem 'github_api'
 gem 'haml-rails'
