@@ -91,6 +91,7 @@ GEM
     neat (1.2.1)
       bourbon (>= 2.1)
       sass (>= 3.2)
+    newrelic_rpm (3.6.1.87)
     nokogiri (1.5.9)
     oauth2 (0.8.1)
       faraday (~> 0.8)
@@ -187,6 +188,7 @@ DEPENDENCIES
   jbuilder (~> 1.0.1)
   jquery-rails
   neat
+  newrelic_rpm
   omniauth-github
   pg
   rails (= 4.0.0.beta1)
