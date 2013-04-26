@@ -9,23 +9,25 @@ div.page {
     }
 
     .user {
-      height: 2.8em;
-
-      .name {
-        color: $font-color;
-        img.avatar {
-          width: 2.8em;
-          height: 2.8em;
-        }
-        padding-right: 1em;
+      line-height: 3em;
+      color: $font-color;
+      * {
+        display: inline-block;  *
+        vertical-align: middle;
       }
 
-      .button {
-        a {
-          @include fill-parent;
-          text-align: center;
-          font-size: 1.5em;
-        }
+      img {
+        width: 3em;
+        height: 3em;
+        vertical-align: middle;
+        margin-right: 10px;
+      }
+
+      a {
+        width: 10em;
+        float: right;
+        line-height: 2em;
+        font-size: 1.5em;
         &.sign-out { @include button(shiny, #61584B); }
         &.sign-in  { @include button(shiny, #4294f0); }
       }

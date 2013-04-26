@@ -24,8 +24,6 @@ div.page {
 
     .user {
       @include row;
-      .name { @include span-columns(2 of 4); }
-      .button { @include span-columns(2 of 4); }
     }
   }
 }
