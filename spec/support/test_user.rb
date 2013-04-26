@@ -3,7 +3,6 @@ require 'bbq/test_user'
 class TestUser < Bbq::TestUser
   def open_plugin_list
     visit '/'
-    click_link "Plugins"
   end
 
   module PluginSubmitter

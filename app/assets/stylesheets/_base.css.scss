@@ -25,6 +25,9 @@ div.page {
     .user {
       @include row;
     }
+    .menu {
+      @include row;
+    }
   }
 }
 
