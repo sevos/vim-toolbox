@@ -1,7 +1,6 @@
 div.page {
   aside {
-    $font-color: #DBC7AB + #222222;
-    @include disable-link-decoration($font-color);
+    @include disable-link-decoration($color-fg);
 
     h1 {
       font-size: 2.5em;
@@ -10,7 +9,7 @@ div.page {
 
     .user {
       line-height: 3em;
-      color: $font-color;
+      color: $color-fg;
       * {
         display: inline-block;  *
         vertical-align: middle;

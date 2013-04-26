@@ -40,7 +40,6 @@ section.content {
 
   #new-plugin {
     form {
-      @include disable-link-decoration($color-fg-content);
       @include span-columns(6 of 8);
       @include shift(1);
       text-align: center;
@@ -64,8 +63,7 @@ section.content {
       }
 
       a.back {
-        display: inline-block;
-        margin-right:15px;
+        disable-link-decoration($color-fg-content)
       }
 
       input[type=submit] {
