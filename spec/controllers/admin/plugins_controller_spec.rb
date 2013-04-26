@@ -42,4 +42,29 @@ describe Admin::PluginsController do
     end
 
   end
+
+  describe "DELETE destroy" do
+    let(:plugin) { double(id: 1, destroy: nil) }
+
+    before do
+      Plugin.stub(find: plugin)
+    end
+
+    subject { delete :destroy, id: 1 }
+
+    it 'finds correct plugin' do
+      Plugin.should_receive(:find).with("1").and_return(plugin)
+      subject
+    end
+
+    it 'destroys plugin' do
+      plugin.should_receive :destroy
+      subject
+    end
+
+    it "redirects back to admin's plugin list" do
+      subject
+      expect(response).to redirect_to(admin_plugins_path)
+    end
+  end
 end

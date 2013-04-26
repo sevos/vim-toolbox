@@ -4,7 +4,7 @@ VimToolbox::Application.routes.draw do
   resources :plugins
 
   namespace :admin do
-    resources :plugins do
+    resources :plugins, only: %i(index destroy) do
       member do
         put :approve
       end

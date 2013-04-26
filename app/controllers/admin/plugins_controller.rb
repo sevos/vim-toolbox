@@ -13,4 +13,10 @@ class Admin::PluginsController < ApplicationController
     plugin.sync
     redirect_to admin_plugins_path
   end
+
+  def destroy
+    plugin = Plugin.find(params[:id])
+    plugin.destroy
+    redirect_to admin_plugins_path
+  end
 end

@@ -29,6 +29,14 @@ class TestUser < Bbq::TestUser
       end
     end
 
+    def reject_plugin repo
+      open_admin_plugin_list
+
+      within(".plugin", text: repo) do
+        click_button "Reject"
+      end
+    end
+
     def does_not_see_plugin repository
       open_admin_plugin_list
       not_see! repository
