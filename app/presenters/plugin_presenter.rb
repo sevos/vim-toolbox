@@ -7,7 +7,8 @@ class PluginPresenter < SimpleDelegator
 
   def repository
     @link_builder.link_to(@plugin.repository,
-                          github_repository_url(@plugin.repository))
+                          github_repository_url(@plugin.repository),
+                          target: "_blank")
   end
 
   def description
