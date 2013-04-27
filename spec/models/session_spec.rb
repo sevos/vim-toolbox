@@ -37,7 +37,7 @@ describe Session do
     let(:controller_session) { Hash.new }
     let(:session) { Session.new(controller_session) }
     let(:auth_params) {
-      { provider: 'github', uid: '12345' }
+      { 'provider' => 'github', 'uid' => '12345' }
     }
     subject { session.sign_in(auth_params) }
 
@@ -59,11 +59,11 @@ describe Session do
     let(:session) { Session.new(controller_session) }
     let(:auth_params) {
       {
-        provider: 'github', uid: '12345',
-        info: {
-          nickname: 'sevos',
-          email: 'artur.roszczyk@gmail.com',
-          image: 'http://example.com/image.gif'
+        'provider' => 'github', 'uid' => '12345',
+        'info' => {
+          'nickname' => 'sevos',
+          'email' => 'artur.roszczyk@gmail.com',
+          'image' => 'http://example.com/image.gif'
         }
       }
     }
