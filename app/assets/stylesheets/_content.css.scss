@@ -38,15 +38,15 @@ section.content {
       }
 
       .counter {
-        margin: 0;
-        color: #CCC;
+        padding: 0;
+        color: #080;
         top: 0px;
         right: 0px;
         float: right;
 
-        font-size: 24px;
+        font-size: 18px;
         a {
-          @include button;
+          @include button(pill);
           text-decoration: none;
         }
       }
