@@ -29,9 +29,4 @@ class PluginsController < ApplicationController
   def plugin_params
     params.require(:plugin).permit(:repository)
   end
-
-  def toolbox
-    Toolbox.for(current_user)
-  end
-  helper_method :toolbox
 end

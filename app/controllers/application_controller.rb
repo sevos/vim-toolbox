@@ -14,4 +14,9 @@ class ApplicationController < ActionController::Base
     return true if current_user
     redirect_to "/auth/github" and false
   end
+
+  def toolbox
+    Toolbox.for(current_user)
+  end
+  helper_method :toolbox
 end

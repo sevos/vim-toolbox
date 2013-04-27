@@ -27,4 +27,10 @@ feature "plugins" do
     artur.does_not_see_plugin 'user/superplugin'
     adam.does_not_see_plugin "user/superplugin"
   end
+
+  scenario "displaying admin page as logged in github user" do
+    adam.roles(:github_user, :plugin_reviewer)
+    adam.sign_in
+    adam.open_admin_plugin_list
+  end
 end
