@@ -42,4 +42,17 @@ describe Toolbox do
       expect(subject).to eq(user_plugins_list)
     end
   end
+
+  describe "#include?" do
+    let(:user_plugins_list) { double }
+    let(:user) { double(plugins: user_plugins_list) }
+
+    it "delegates to plugins collection" do
+      user_plugins_list.should_receive(:include?).
+        with(plugin = double).and_return(true)
+      expect(toolbox).to include(plugin)
+    end
+
+  end
+
 end

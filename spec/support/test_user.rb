@@ -51,7 +51,7 @@ class TestUser < Bbq::TestUser
       see! with_description if with_description
       if has_been_added_to_toolboxes
         within(".plugin", text: repository) do
-          expect(page).to have_content "(#{has_been_added_to_toolboxes}) >"
+          expect(page).to have_content "(#{has_been_added_to_toolboxes})"
         end
       end
     end
@@ -70,6 +70,13 @@ class TestUser < Bbq::TestUser
     def added_to_toolbox repository
       within("#toolbox") do
         expect(page).to have_content(repository)
+      end
+    end
+
+    def cannot_add_plugin repository
+      open_plugin_list
+      within(".plugin", text: repository) do
+        expect(page).to_not have_css("a.add")
       end
     end
   end

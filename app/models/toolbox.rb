@@ -16,8 +16,6 @@ class Toolbox
     "toolbox"
   end
 
-  def plugins
-    @user.plugins
-  end
-
+  delegate :plugins, to: :@user
+  delegate :include?, to: :plugins
 end
