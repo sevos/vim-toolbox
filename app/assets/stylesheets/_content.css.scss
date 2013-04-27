@@ -36,6 +36,16 @@ section.content {
       p {
         color: #444;
       }
+
+      a.add {
+        text-decoration: none;
+        color: #CCC;
+        top: 0px;
+        right: 0px;
+        float: right;
+
+        font-size: 24px;
+      }
     }
   }
 

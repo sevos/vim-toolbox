@@ -69,4 +69,13 @@ describe Plugin do
     end
 
   end
+
+  describe "#installations_count" do
+    subject { plugin.installations_count }
+
+    it "returns number of users, who installed the plugin" do
+      plugin.stub(users: double(count: count = double))
+      expect(subject).to eq(count)
+    end
+  end
 end

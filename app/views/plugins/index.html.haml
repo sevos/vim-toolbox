@@ -3,5 +3,6 @@
 #plugins
   - @plugins.each do |plugin|
     .plugin
+      = plugin.add_to_toolbox_button
       %h1= plugin.repository
       %p= plugin.description

@@ -44,15 +44,27 @@ class TestUser < Bbq::TestUser
   end
 
   module PluginViewer
-    def see_plugin(repository, with_description: nil)
+    def see_plugin(repository, with_description: nil,
+                   has_been_added_to_toolboxes: nil)
       open_plugin_list
       see! repository
       see! with_description if with_description
+      if has_been_added_to_toolboxes
+        within(".plugin", text: repository) do
+          expect(page).to have_content "(#{has_been_added_to_toolboxes}) >"
+        end
+      end
     end
 
     def does_not_see_plugin repository
       open_plugin_list
       not_see! repository
+    end
+
+    def add_to_toolbox repository
+      within(".plugin", text: repository) do
+        find(".add").click
+      end
     end
   end
 

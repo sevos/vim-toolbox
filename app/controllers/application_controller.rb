@@ -9,4 +9,9 @@ class ApplicationController < ActionController::Base
     User.find_by_id(session[:user_id])
   end
   helper_method :current_user
+
+  def require_login
+    return true if current_user
+    redirect_to "/auth/github" and false
+  end
 end

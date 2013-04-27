@@ -1,7 +1,11 @@
 VimToolbox::Application.routes.draw do
   root to: 'plugins#index'
   resource :session, only: [:create, :destroy]
-  resources :plugins
+  resources :plugins do
+    member do
+      post :install
+    end
+  end
 
   namespace :admin do
     resources :plugins, only: %i(index destroy) do
