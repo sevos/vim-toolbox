@@ -1,10 +1,10 @@
 require 'spec_helper'
 
 describe Toolbox do
+  let(:user) { double }
   subject(:toolbox) { Toolbox.for(user) }
 
   describe ".for" do
-    let(:user) { double }
 
     it { should be_a Toolbox }
 
@@ -26,6 +26,20 @@ describe Toolbox do
 
       subject
     end
+  end
 
+  describe "#to_partial_path" do
+    subject { toolbox.to_partial_path }
+    it { should eq("toolbox") }
+  end
+
+  describe "#plugins" do
+    subject { toolbox.plugins }
+    let(:user_plugins_list) { double }
+    let(:user) { double(plugins: user_plugins_list) }
+
+    it "returns user's plugins" do
+      expect(subject).to eq(user_plugins_list)
+    end
   end
 end

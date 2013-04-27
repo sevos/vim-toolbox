@@ -1,0 +1,5 @@
+#toolbox
+  %h1 Toolbox
+  %ul
+    - toolbox.plugins.each do |plugin|
+      %li= PluginPresenter.new(plugin, self).repository

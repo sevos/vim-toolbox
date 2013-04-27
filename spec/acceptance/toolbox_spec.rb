@@ -14,6 +14,7 @@ feature "toolbox" do
     adam.see_plugin "test/repository", has_been_added_to_toolboxes: 1
     adam.added_to_toolbox "test/repository"
 
+    paul.roles(:plugin_viewer, :github_user)
     paul.sign_in
     paul.add_to_toolbox "test/repository"
     adam.see_plugin "test/repository", has_been_added_to_toolboxes: 2

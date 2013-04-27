@@ -66,6 +66,12 @@ class TestUser < Bbq::TestUser
         find(".add").click
       end
     end
+
+    def added_to_toolbox repository
+      within("#toolbox") do
+        expect(page).to have_content(repository)
+      end
+    end
   end
 
   module GithubUser

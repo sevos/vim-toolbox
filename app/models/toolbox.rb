@@ -12,4 +12,12 @@ class Toolbox
     @user.plugins << plugin
   end
 
+  def to_partial_path
+    "toolbox"
+  end
+
+  def plugins
+    @user.plugins
+  end
+
 end

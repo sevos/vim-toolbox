@@ -47,6 +47,7 @@ gem 'jbuilder', '~> 1.0.1'
 group :test do
   gem 'webmock'
   gem 'bbq', '~> 0.2.0'
+  gem 'launchy'
 end
 
 group :development, :test do

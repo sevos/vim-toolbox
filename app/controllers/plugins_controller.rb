@@ -33,4 +33,5 @@ class PluginsController < ApplicationController
   def toolbox
     Toolbox.for(current_user)
   end
+  helper_method :toolbox
 end
