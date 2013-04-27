@@ -1,6 +1,6 @@
 class Plugin < ActiveRecord::Base
   has_many :installations, class_name: "PluginInstallation"
-  has_many :users, :through => :installations
+  has_many :users, :through => :installations, uniq: true
 
   scope :waiting, -> { where(approved_at: nil) }
   scope :approved, -> { where.not(approved_at: nil) }
