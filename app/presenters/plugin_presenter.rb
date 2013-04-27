@@ -17,19 +17,15 @@ class PluginPresenter < SimpleDelegator
 
   def add_to_toolbox_button
     if toolbox && toolbox.include?(@plugin)
-      installations_count
+      "Installed (#{installations_count})"
     else
-      @view_context.link_to("#{installations_count} >",
+      @view_context.link_to("Install (#{installations_count})",
                             install_plugin_path,
-                              class: "add", method: "post")
+                            class: "add", method: "post")
     end
   end
 
   private
-
-  def installations_count
-    "(#{super})"
-  end
 
   def toolbox
     @view_context.toolbox

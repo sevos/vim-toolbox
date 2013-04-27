@@ -37,14 +37,18 @@ section.content {
         color: #444;
       }
 
-      a.add {
-        text-decoration: none;
+      .counter {
+        margin: 0;
         color: #CCC;
         top: 0px;
         right: 0px;
         float: right;
 
         font-size: 24px;
+        a {
+          @include button;
+          text-decoration: none;
+        }
       }
     }
   }
