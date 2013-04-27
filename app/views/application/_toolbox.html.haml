@@ -1,5 +1,7 @@
 #toolbox
-  %h1 Toolbox
   %ul
     - toolbox.plugins.each do |plugin|
-      %li= PluginPresenter.new(plugin, self).repository
+      %li
+        = PluginPresenter.new(plugin, self).repository
+        %span.delete
+          = link_to "[x]", "#"

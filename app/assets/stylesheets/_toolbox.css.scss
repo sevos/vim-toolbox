@@ -1,0 +1,18 @@
+#toolbox {
+  margin-top: 1em;
+  ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li {
+      padding: 0.5em;
+      background-color: $color-bg-content;
+      opacity: 0.5;
+      &:hover { opacity: 1; }
+
+      a { color: $color-fg-content; }
+      span.delete { float: right; }
+      margin-bottom: 0.2em;
+    }
+  }
+}
