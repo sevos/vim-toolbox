@@ -1,5 +1,9 @@
 #toolbox {
   margin-top: 1em;
+  a.show { 
+    @include row;
+    text-align: right;
+  }
   ul {
     margin: 0;
     padding: 0;

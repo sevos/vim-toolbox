@@ -1,6 +1,7 @@
 VimToolbox::Application.routes.draw do
   root to: 'plugins#index'
   resource :session, only: [:create, :destroy]
+	resources :toolboxes
   resources :plugins do
     member do
       post :install

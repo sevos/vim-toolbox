@@ -1,0 +1,13 @@
+echo "Downloading vimball... \c"
+curl -s <%= toolbox_url(current_user.id, format: "vim") %> > ~/.toolbox.vim
+echo "ok"
+
+if [ ! -x ~/.vim/bundle/vundle ];
+then
+  mkdir -p ~/.vim/bundle
+  git clone git://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+fi
+
+sh -c 'echo "" | vim +BundleInstall! +BundleClean! +qall -'
+
+echo "Restart your VIM to apply changes"

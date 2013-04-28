@@ -1,0 +1,17 @@
+%section.actions
+  = link_to "back to plugins", plugins_path
+%h1 Your toolbox
+
+%h2 Installation
+
+%p Run following command to install your vim toolbox:
+%code 
+  curl #{toolbox_url(current_user.id, format: "sh")} | sh
+%p In order to use it within your vim configuration, add following line to your vimrc:
+%code source ~/.toolbox.vim
+
+%h2 Updating configuration
+%p 
+  Whenever you install or uninstall plugin, you should update your local changes by
+  invoking <code>:VimToolboxUpdate</code> in your vim. Remember to restart your editor
+  to apply changes!

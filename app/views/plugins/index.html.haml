@@ -1,4 +1,5 @@
 %section.actions
+  = link_to "Your toolbox", toolbox_path(current_user.id) if current_user
   = link_to "Submit plugin", new_plugin_path
 #plugins
   - @plugins.each do |plugin|

@@ -1,0 +1,9 @@
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+command! -bar -nargs=* VimToolboxUpdate exec "!curl <%= toolbox_url(params[:id], format: "sh") %> | sh"
+
+Bundle "gmarik/vundle"
+<% @toolbox.plugins.each do |plugin| %>
+Bundle "<%= plugin.repository %>"
+<% end %>
