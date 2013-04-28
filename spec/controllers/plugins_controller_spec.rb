@@ -93,4 +93,44 @@ describe PluginsController do
 
     end
   end
+
+  describe "DELETE uninstall" do
+    subject { delete :uninstall, id: 1 }
+    let(:plugin) { double }
+    let(:toolbox) { double(uninstall: nil) }
+
+    it "redirects to authentication" do
+      subject
+      expect(response).to redirect_to("/auth/github")
+    end
+
+    context 'when logged in' do
+      let(:user) { double }
+
+      before do
+        controller.stub(current_user: user)
+        Plugin.stub(find: plugin)
+        Toolbox.stub(for: toolbox)
+      end
+
+      it 'finds plugin' do
+        Plugin.should_receive(:find).
+          with("1").and_return(plugin)
+        subject
+      end
+
+      it 'uninstalls plugin from toolbox' do
+        toolbox.should_receive(:uninstall).with(plugin)
+        subject
+      end
+
+      it 'redirects to plugin list' do
+        subject
+        expect(response).to redirect_to(plugins_path)
+      end
+
+    end
+
+
+  end
 end

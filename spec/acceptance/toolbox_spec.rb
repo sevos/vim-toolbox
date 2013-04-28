@@ -8,26 +8,33 @@ feature "toolbox" do
     @repository = "test/repository"
     @plugin = Plugin.create!(repository: @repository,
                              approved_at: 1.week.ago)
+    adam.roles(:plugin_viewer, :github_user)
+    paul.roles(:plugin_viewer, :github_user)
   end
 
   scenario "install plugin" do
-    adam.roles(:plugin_viewer, :github_user)
     adam.sign_in as: "adam"
     adam.see_plugin @repository, has_been_added_to_toolboxes: 0
-    adam.add_to_toolbox @repository
+    adam.install_plugin @repository
     adam.see_plugin @repository, has_been_added_to_toolboxes: 1
-    adam.added_to_toolbox @repository
+    adam.has_in_toolbox @repository
 
-    paul.roles(:plugin_viewer, :github_user)
     paul.sign_in as: "paul"
-    paul.add_to_toolbox @repository
+    paul.install_plugin @repository
     adam.see_plugin @repository, has_been_added_to_toolboxes: 2
   end
 
   scenario "cannot install a plugin twice" do
-    adam.roles(:plugin_viewer, :github_user)
     adam.sign_in
-    adam.add_to_toolbox @repository
+    adam.install_plugin @repository
     adam.cannot_add_plugin @repository
+  end
+
+  scenario "uninstall plugin" do
+    adam.sign_in
+    adam.install_plugin @repository
+    adam.uninstall_plugin @repository
+    adam.has_not_in_toolbox @repository
+    adam.see_plugin @repository, has_been_added_to_toolboxes: 0
   end
 end

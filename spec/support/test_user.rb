@@ -61,15 +61,27 @@ class TestUser < Bbq::TestUser
       not_see! repository
     end
 
-    def add_to_toolbox repository
+    def install_plugin repository
       within(".plugin", text: repository) do
         find(".add").click
       end
     end
 
-    def added_to_toolbox repository
+    def has_in_toolbox repository
       within("#toolbox") do
         expect(page).to have_content(repository)
+      end
+    end
+
+    def has_not_in_toolbox repository
+      within("#toolbox") do
+        expect(page).to_not have_content(repository)
+      end
+    end
+
+    def uninstall_plugin repository
+      within("#toolbox li", text: repository) do
+        find(".remove").click
       end
     end
 

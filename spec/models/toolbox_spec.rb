@@ -28,6 +28,19 @@ describe Toolbox do
     end
   end
 
+  describe "#uninstall" do
+    let(:user) { double(plugins: double) }
+    let(:plugin) { double }
+    subject { toolbox.uninstall(plugin) }
+
+    it 'deletes association between user and plugin' do
+      user.plugins.should_receive(:delete).
+        with(plugin)
+
+      subject
+    end
+  end
+
   describe "#to_partial_path" do
     subject { toolbox.to_partial_path }
     it { should eq("toolbox") }

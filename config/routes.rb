@@ -4,6 +4,7 @@ VimToolbox::Application.routes.draw do
   resources :plugins do
     member do
       post :install
+      delete :uninstall
     end
   end
 

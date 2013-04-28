@@ -1,5 +1,5 @@
 class PluginsController < ApplicationController
-  before_filter :require_login, only: [:install]
+  before_filter :require_login, only: [:install, :uninstall]
 
   def index
     @plugins = Plugin.approved.map { |p| PluginPresenter.new(p, view_context) }
@@ -21,6 +21,12 @@ class PluginsController < ApplicationController
   def install
     plugin = Plugin.find(params[:id])
     toolbox.install(plugin)
+    redirect_to plugins_path
+  end
+
+  def uninstall
+    plugin = Plugin.find(params[:id])
+    toolbox.uninstall(plugin)
     redirect_to plugins_path
   end
 

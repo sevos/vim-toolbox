@@ -12,6 +12,10 @@ class Toolbox
     @user.plugins << plugin
   end
 
+  def uninstall(plugin)
+    @user.plugins.delete(plugin)
+  end
+
   def to_partial_path
     "toolbox"
   end

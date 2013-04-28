@@ -4,4 +4,4 @@
       %li
         = PluginPresenter.new(plugin, self).repository
         %span.delete
-          = link_to "[x]", "#"
+          = link_to "[x]", uninstall_plugin_path(plugin), method: "delete", class: "remove"
