@@ -37,4 +37,19 @@ feature "toolbox" do
     adam.has_not_in_toolbox @repository
     adam.see_plugin @repository, has_been_added_to_toolboxes: 0
   end
+
+  scenario "downloading toolbox" do
+    adam.roles(:vim_user)
+    adam.sign_in
+    adam.install_plugin @repository
+
+    adam_id = adam.db_user.id
+
+    installer_sh = adam.download_installer_sh
+    expect(installer_sh).to include("curl -s http://www.example.com/toolboxes/#{adam_id}.vim > ~/.toolbox.vim")
+
+    toolbox_vim = adam.download_toolbox_vim(installer_sh)
+
+    expect(toolbox_vim).to include("Bundle \"#{@repository}\"")
+  end
 end

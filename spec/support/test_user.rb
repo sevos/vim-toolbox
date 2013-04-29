@@ -117,5 +117,28 @@ class TestUser < Bbq::TestUser
       open_plugin_list
       click_link "Sign out"
     end
+
+    def db_user
+      User.where(nickname: @logged_in_user_name).first
+    end
+  end
+
+  module VimUser
+    def download_installer_sh
+      open_plugin_list
+      click_link "view your toolbox"
+      installer_sh_url = find("code", text: "curl").text.split(" ").second
+      visit installer_sh_url
+      page.body
+    end
+
+    def download_toolbox_vim(installer)
+      curl_cmd = installer.split("\n").grep(/curl/).grep(/\.vim/).first
+
+      vimball_url = curl_cmd.scan(/(http:\/\/\S+) /).first.first
+
+      visit vimball_url
+      page.body
+    end
   end
 end
