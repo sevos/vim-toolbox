@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130502200941) do
+ActiveRecord::Schema.define(version: 20130502204716) do
 
   create_table "plugin_installations", force: true do |t|
     t.integer  "user_id"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20130502200941) do
     t.datetime "updated_at"
     t.datetime "approved_at"
     t.text     "description"
-    t.integer  "installations_count"
+    t.integer  "installations_count", default: 0, null: false
   end
 
   create_table "users", force: true do |t|
