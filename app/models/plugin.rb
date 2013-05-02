@@ -4,6 +4,9 @@ class Plugin < ActiveRecord::Base
 
   scope :waiting, -> { where(approved_at: nil) }
   scope :approved, -> { where.not(approved_at: nil) }
+  scope :recommended_order, -> {
+    order("installations_count DESC", "approved_at DESC")
+  }
 
   def approve
     self.approved_at = Time.now

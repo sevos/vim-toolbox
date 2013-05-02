@@ -2,7 +2,7 @@ class PluginsController < ApplicationController
   before_filter :require_login, only: [:install, :uninstall]
 
   def index
-    @plugins = Plugin.approved.map { |p| PluginPresenter.new(p, view_context) }
+    @plugins = Plugin.approved.recommended_order.map { |p| PluginPresenter.new(p, view_context) }
   end
 
   def new

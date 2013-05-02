@@ -56,6 +56,13 @@ class TestUser < Bbq::TestUser
       end
     end
 
+    def see_plugin_list(expected_list)
+      open_plugin_list
+      within("#plugins") do
+        expect(page.all(".plugin h1 a").map(&:text)).to eq(expected_list)
+      end
+    end
+
     def does_not_see_plugin repository
       open_plugin_list
       not_see! repository

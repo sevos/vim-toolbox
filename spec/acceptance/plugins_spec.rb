@@ -33,4 +33,15 @@ feature "plugins" do
     adam.sign_in
     adam.open_admin_plugin_list
   end
+
+  scenario "ordering plugins: installations_count DESC, approved_at DESC" do
+    @plugin_a = Plugin.create!(repository: "test/a", approved_at: 1.day.ago)
+    @plugin_b = Plugin.create!(repository: "test/b", approved_at: 2.days.ago)
+    @plugin_c = Plugin.create!(repository: "test/c", approved_at: 3.days.ago)
+
+    artur.roles(:plugin_viewer, :vim_user, :github_user)
+    artur.sign_in
+    artur.install_plugin "test/c"
+    artur.see_plugin_list %w(test/c test/a test/b)
+  end
 end

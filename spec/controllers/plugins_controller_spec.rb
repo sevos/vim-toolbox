@@ -48,7 +48,8 @@ describe PluginsController do
 
   describe "GET index" do
     before do
-      Plugin.stub(approved: [double])
+      Plugin.stub(approved: Plugin)
+      Plugin.stub(recommended_order: [double])
       get :index
     end
 
