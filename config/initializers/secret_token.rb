@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-VimToolbox::Application.config.secret_key_base = 'bf3f69e901f8d19410ab06ef8a999a299ca52cdf8e4b1ab7f05551a91db8e53cbaa8a7dbce024f4d54f6f42349f901fed031a6d54e66a46559b600882126cc10'
+VimToolbox::Application.config.secret_key_base = ENV["COOKIE_SECRET_KEY"] || 'bf3f69e901f8d19410ab06ef8a999a299ca52cdf8e4b1ab7f05551a91db8e53cbaa8a7dbce024f4d54f6f42349f901fed031a6d54e66a46559b600882126cc10'
